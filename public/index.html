@@ -1,33 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CSS/HTML Workshop with Drivy</title>
-  </head>
-  <body>
-    <div id="car">
-      <input class="model" type="text" placeholder="Car model"/>
-      <input class="price-by-day" type="number" placeholder="Price by day"/>
-      <input class="price-by-km" type="number" placeholder="Price by km"/>
-    </div>
-    <div id="rental">
-      <input class="begin" type="date" placeholder="Rental begin date"/>
-      <input class="end" type="date" placeholder="Rental end date"/>
-      <input class="distance" type="number" placeholder="Distance in km"/>
-      <input class="option" type="checkbox" placeholder="Deductible option"/>
-    </div>
-    <button id="compute">Compute</button>
-    <div id="actors"></div>
-    <script id="template" type="x-tmpl-mustache">
-      {{#actors}}
-        <div class="actor">
-          <span>{{who}}</span>
-          <span>{{type}}</span>
-          <span>{{amount}}</span>
+<head>
+  <title>CSS/HTML Workshop with Drivy</title>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><strong>Drivy</strong></a>
         </div>
-      {{/actors}}
-    </script>
+      </div>
+    </nav>
+    <br/><br/>
+    <h1>Calculate the price !</h1>
+    <br/>
+    <div class="panel-group">
+      <div class="panel panel-primary">
+        <div class="panel panel-heading"><strong>Informations</strong></div>
+        <div class="panel panel-body">
+          <div id="car">
+            <span class="glyphicon glyphicon-search"> </span>
+            <input class="model" type="text" placeholder="Car model"/></br></br>
+            <span class="glyphicon glyphicon-euro"> </span>
+            <input class="price-by-day" type="number" placeholder="Price by day"/></br></br>
+            <span class="glyphicon glyphicon-euro"> </span>
+            <input class="price-by-km" type="number" placeholder="Price by km"/></br></br>
+          </div>
+          <div id="rental">
+            <span class="glyphicon glyphicon-arrow-up"></span>
+            <span class="glyphicon glyphicon-calendar"> </span>
+            <input class="begin" type="date" placeholder="Rental begin date"/></br></br>
+            <span class="glyphicon glyphicon-arrow-down"></span>
+            <span class="glyphicon glyphicon-calendar"> </span>
+            <input class="end" type="date" placeholder="Rental end date"/></br></br>
+            <span class="glyphicon glyphicon-road"> </span>
+            <input class="distance" type="number" placeholder="Distance in km"/></br></br>
+            <input class="option" type="checkbox" placeholder="Deductible option"/> Deductible option</br></br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" id="compute" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Compute</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header modal-header-primary">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><strong>Prix</strong></h4>
+          </div>
+          <div class="modal-body">
+            <div id="actors"></div>
+            <script id="template" type="x-tmpl-mustache">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Who</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                {{#actors}}
+                <tr>
+                  <td>{{who}}</td>
+                  <td>{{type}}</td>
+                  <td>{{amount}}</td>     
+                </tr>
+                {{/actors}}
+              </table>
+            </script>  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
     <script src="drivy.js"></script>
     <script src="index.js"></script>
-  </body>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Design perso -->
+    <link href="design.css" rel="stylesheet" type="text/css">
+  </div>
+</body>
 </html>
